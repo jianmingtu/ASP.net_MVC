@@ -65,8 +65,8 @@ namespace Vidly.Controllers.Api
                 return NotFound();
 
             Mapper.Map(customerDto, customerInDb);
-
-           return Ok(_context.SaveChanges());
+            _context.SaveChanges();
+           return Ok();
         }
 
         // DELETE /api/customers/1
@@ -79,7 +79,8 @@ namespace Vidly.Controllers.Api
                 return NotFound();
 
             _context.Customers.Remove(customerInDb);
-            return Ok(_context.SaveChanges());
+            _context.SaveChanges();
+            return Ok();
         }
     }
 }
