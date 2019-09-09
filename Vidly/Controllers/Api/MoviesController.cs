@@ -1,50 +1,59 @@
 ﻿using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Web.Http;
 using Vidly.Dtos;
 using Vidly.Models;
-using System.Data.Entity;
-
-
-
-
-
 
 namespace Vidly.Controllers.Api
 {
     public class MoviesController : ApiController
     {
-        public ApplicationDbContext _context;
+        private ApplicationDbContext _context;
 
         public MoviesController()
         {
             _context = new ApplicationDbContext();
         }
 
-        protected override void Dispose(bool disposing)
+        public IEnumerable<MovieDto> GetMovies(string query = null)
         {
-            _context.Dispose();
-        }
-        public IEnumerable<MovieDto> GetMovies()
-        {
+            //var moviesQuery = _context.Movies
+            //.Include(m => m.Genre)
+            //.Where(m => m.AailableNumber > 0);
 
-            return _context.Movies.Include(m => m.Genre).ToList().Select(Mapper.Map<Movie, MovieDto>);
+            //if (!String.IsNullOrWhiteSpace(query))
+            //   moviesQuery = moviesQuery.Where(m => m.Name.Contains(query));
+
+            //var movie = moviesQuery
+            //    .ToList()
+            //    .Select(Mapper.Map<Movie, MovieDto>);
+
+            var moviesQuery = _context.Movies
+            .Include(m => m.Genre);
+
+            
+            var movie = moviesQuery
+                .ToList()
+                .Select(Mapper.Map<Movie, MovieDto>);
+
+            return movie;
         }
 
         public IHttpActionResult GetMovie(int id)
         {
-            var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.GenreId == id);
+            var movie = _context.Movies.SingleOrDefault(c => c.Id == id);
 
             if (movie == null)
                 return NotFound();
 
-            return Ok(Mapper.Map < Movie, MovieDto>(movie));
+            return Ok(Mapper.Map<Movie, MovieDto>(movie));
         }
 
         [HttpPost]
+  
         public IHttpActionResult CreateMovie(MovieDto movieDto)
         {
             if (!ModelState.IsValid)
@@ -59,34 +68,37 @@ namespace Vidly.Controllers.Api
         }
 
         [HttpPut]
+
         public IHttpActionResult UpdateMovie(int id, MovieDto movieDto)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
+            var movieInDb = _context.Movies.SingleOrDefault(c => c.Id == id);
 
-            if (movie == null)
+            if (movieInDb == null)
                 return NotFound();
 
-            Mapper.Map(movieDto, movie);
+            Mapper.Map(movieDto, movieInDb);
 
             _context.SaveChanges();
+
             return Ok();
         }
 
         [HttpDelete]
+ 
         public IHttpActionResult DeleteMovie(int id)
         {
-            var movie = _context.Movies.SingleOrDefault(c => c.Id == id);
+            var movieInDb = _context.Movies.SingleOrDefault(c => c.Id == id);
 
-            if (movie == null)
+            if (movieInDb == null)
                 return NotFound();
 
-            _context.Movies.Remove(movie);
+            _context.Movies.Remove(movieInDb);
             _context.SaveChanges();
+
             return Ok();
         }
     }
 }
-

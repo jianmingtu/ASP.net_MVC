@@ -14,7 +14,6 @@ namespace Vidly.Models
 
         public GenreDto Genre { get; set; }
 
-        [Required]
         public byte GenreId { get; set; }
 
 
