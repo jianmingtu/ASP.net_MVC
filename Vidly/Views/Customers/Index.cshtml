@@ -16,15 +16,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<ul>
-    @foreach (var c in Model)
-    {
-        <li>
-            @c.MembershipType.MembershipName
-        </li>
-    }
-</ul>
-
 <h2>Customers</h2>
 
 <table id="customers" class="table table-bordered table-hover">
