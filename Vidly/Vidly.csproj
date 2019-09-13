@@ -46,6 +46,12 @@
     <Reference Include="AutoMapper, Version=4.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.4.1.0\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Glimpse.Ado, Version=1.7.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Glimpse.Ado.1.7.3\lib\net45\Glimpse.Ado.dll</HintPath>
     </Reference>
@@ -135,12 +141,6 @@
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -283,6 +283,30 @@
     <Compile Include="Migrations\201909060640467_AddAvailableNumber.cs" />
     <Compile Include="Migrations\201909060640467_AddAvailableNumber.Designer.cs">
       <DependentUpon>201909060640467_AddAvailableNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909130224402_initialModel1.cs" />
+    <Compile Include="Migrations\201909130224402_initialModel1.Designer.cs">
+      <DependentUpon>201909130224402_initialModel1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909130400512_removeAllDatabases.cs" />
+    <Compile Include="Migrations\201909130400512_removeAllDatabases.Designer.cs">
+      <DependentUpon>201909130400512_removeAllDatabases.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909130456194_change.cs" />
+    <Compile Include="Migrations\201909130456194_change.Designer.cs">
+      <DependentUpon>201909130456194_change.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909130524519_InsertDataToCustomers.cs" />
+    <Compile Include="Migrations\201909130524519_InsertDataToCustomers.Designer.cs">
+      <DependentUpon>201909130524519_InsertDataToCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909130541460_insertDataToMovies.cs" />
+    <Compile Include="Migrations\201909130541460_insertDataToMovies.Designer.cs">
+      <DependentUpon>201909130541460_insertDataToMovies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909130606468_updateDurationInMonths.cs" />
+    <Compile Include="Migrations\201909130606468_updateDurationInMonths.Designer.cs">
+      <DependentUpon>201909130606468_updateDurationInMonths.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -618,6 +642,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909060640467_AddAvailableNumber.resx">
       <DependentUpon>201909060640467_AddAvailableNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909130224402_initialModel1.resx">
+      <DependentUpon>201909130224402_initialModel1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909130400512_removeAllDatabases.resx">
+      <DependentUpon>201909130400512_removeAllDatabases.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909130456194_change.resx">
+      <DependentUpon>201909130456194_change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909130524519_InsertDataToCustomers.resx">
+      <DependentUpon>201909130524519_InsertDataToCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909130541460_insertDataToMovies.resx">
+      <DependentUpon>201909130541460_insertDataToMovies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909130606468_updateDurationInMonths.resx">
+      <DependentUpon>201909130606468_updateDurationInMonths.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
